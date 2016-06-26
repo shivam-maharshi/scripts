@@ -1,2 +1,2 @@
-# install
-Centralized location for frameworks/tools/software installation scripts.
+# script
+Centralized location for frameworks/tools/software installation/monitoring and other scripts.
