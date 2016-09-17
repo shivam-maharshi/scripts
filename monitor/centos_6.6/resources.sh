@@ -1,1 +1,1 @@
-collectl --interval=10 --filename=/home/shivam/data
+collectl -oT -oD -s+m --interval=10 > /home/shivam/data.txt
