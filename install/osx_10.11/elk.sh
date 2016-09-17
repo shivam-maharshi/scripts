@@ -26,52 +26,34 @@ cat <<EOF | sudo tee $PWD/logstash/logstash.conf
  
 input {
   file {
-    path => [ "/var/log/*.log", "/var/log/messages", "/var/log/syslog" ]
-    type => "syslog"
-  }
-  file {
-    path => "/var/apache/logs/custom_log"
-    type => "apache_access_log"
-  }
-  file {
-    path => "/var/apache/logs/error_log"
-    type => "apache_error_log"
+    path => [ "/Users/library/development/benchmarking/resources/*.txt" ]
+    type => "core2"
+    start_position => "beginning"
   }
 }
- 
+
 filter {
-  if [type] == "apache_access_log" {
-    mutate { replace => { "type" => "apache-access" } }
-    grok {
-      match => { "message" => "%{COMBINEDAPACHELOG}" }
+  if [type] == "core2" {
+    csv {
+      columns => ["cpu", "Disk KBRead", "Disk KBWrites", "Network KBIn", "Network KBOut"]
+      separator => ","
     }
-    date {
-      match => [ "timestamp", "dd/MMM/yyyy:HH:mm:ss Z" ]
-    }
-  }
-  if [type] == "apache_error_log" {
-    mutate { replace => { "type" => "apache-error" } }
-    grok {
-      patterns_dir => [ "/Users/username/logstash/patterns.d" ]
-      match => [ "message", '%{APACHE_ERROR_LOG}' ]
-      overwrite => [ "message" ]
-    }
-    if !("_grokparsefailure" in [tags]) {
-      date {
-        match => [ "timestamp", "EEE MMM dd HH:mm:ss.SSSSSS yyyy" ]
-      }
-    }
-  }
-  if [type] == "syslog" {
-    grok {
-      match => [ "message", "%{SYSLOGBASE2}" ]
+    mutate {
+      convert => ["cpu", "integer", "Disk KBRead", "integer", "Disk KBWrites", "integer", "Network KBIn", "integer", "Network KBOut", "integer"]
     }
   }
 }
- 
+
 output {
-  elasticsearch { host => localhost }
-  stdout { codec => rubydebug }
+  elasticsearch {
+    action => "index"
+    hosts => "127.0.0.1"
+    index => "logstash-%{+YYYY.MM.dd}"
+    workers => 1
+  }
+  #stdout {
+  #  codec => rubydebug
+  #}}
 }
  
 # eof
