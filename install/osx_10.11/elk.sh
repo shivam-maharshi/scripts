@@ -33,13 +33,14 @@ input {
 }
 
 filter {
-  if [type] == "core2" {
+  if [type] == "collectl" {
     csv {
-      columns => ["cpu", "Disk KBRead", "Disk KBWrites", "Network KBIn", "Network KBOut"]
-      separator => ","
+      separator => " "
     }
     mutate {
-      convert => ["cpu", "integer", "Disk KBRead", "integer", "Disk KBWrites", "integer", "Network KBIn", "integer", "Network KBOut", "integer"]
+      remove_field => [column4, column6, column7, column8, column9, column10, column11, column12, column13, column14, column15, column16, column17, column18, column19, column20, column21, column22, column23, column26, column27, column28, column29, column30, column31, column32, column33, column36, column37, column38, column39]
+      convert => ["column3", "integer", "column5", "integer", "column24", "integer", "column25", "integer", "column34", "integer", "column35", "integer"]
+      rename => ["column1", "DATE", "column2", "TIME", "column3", "CPU_USR", "column5", "CPU_SYS", "column24", "NET_RX_KB", "column25", "NET_TX_KB", "column34", "DSK_RD_KB", "column35", "DSK_WT_KB"]
     }
   }
 }
