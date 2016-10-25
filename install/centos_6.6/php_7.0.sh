@@ -37,7 +37,6 @@ sudo ./configure --prefix=/usr/local/php7 \
     --enable-xmlwriter \
     --enable-zip \
     --enable-maintainer-zts \
-    --enable-pthreads \
     --with-tsrm-pthreads \
     --with-zlib
     
