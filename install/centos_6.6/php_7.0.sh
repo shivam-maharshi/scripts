@@ -6,6 +6,7 @@ git checkout PHP-7.0.2
 
 sudo ./buildconf --force
 
+sudo make clean
 sudo ./configure --prefix=/usr/local/php7 \
     --with-config-file-path=/usr/local/php7/etc \
     --with-config-file-scan-dir=/usr/local/php7/etc/conf.d \
@@ -40,7 +41,6 @@ sudo ./configure --prefix=/usr/local/php7 \
     --with-tsrm-pthreads \
     --with-zlib
 
-sudo make clean
 sudo make -j8    
 sudo make install
     
