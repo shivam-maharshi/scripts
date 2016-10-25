@@ -4,3 +4,5 @@ yum install yum-utils
 yum-config-manager --enable remi-php70
 yum update
 php --version
+
+sudo yum install php-pecl-zendopcache
