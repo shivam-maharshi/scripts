@@ -39,7 +39,8 @@ sudo ./configure --prefix=/usr/local/php7 \
     --enable-maintainer-zts \
     --with-tsrm-pthreads \
     --with-zlib
-    
+
+sudo make clean
 sudo make -j8    
 sudo make install
     
