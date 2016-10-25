@@ -45,5 +45,5 @@ sudo make -j8
 sudo make install
 sudo mkdir /usr/local/php7/etc/conf.d
 sudo touch /usr/local/php7/etc/conf.d/modules.ini
-sudo echo "zend_extension=opcache.so" > /usr/local/php7/etc/conf.d/modules.ini
+sudo echo "zend_extension=opcache.so" | sudo tee --append /usr/local/php7/etc/conf.d/modules.ini > /dev/null
     
