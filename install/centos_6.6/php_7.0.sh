@@ -43,12 +43,7 @@ sudo ./configure --prefix=/usr/local/php7 \
 
 sudo make -j8    
 sudo make install
-    
 sudo mkdir /usr/local/php7/etc/conf.d
-sudo cp -v ./php.ini-production /usr/local/php7/lib/php.ini
-sudo cp -v ./sapi/fpm/www.conf /usr/local/php7/etc/php-fpm.d/www.conf
-sudo cp -v ./sapi/fpm/php-fpm.conf /usr/local/php7/etc/php-fpm.conf
-
 sudo touch /usr/local/php7/etc/conf.d/modules.ini
 sudo echo "zend_extension=opcache.so" > /usr/local/php7/etc/conf.d/modules.ini
     
