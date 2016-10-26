@@ -10,6 +10,7 @@ sudo make clean
 sudo ./configure --prefix=/usr/local/php7 \
     --with-config-file-path=/usr/local/php7/etc \
     --with-config-file-scan-dir=/usr/local/php7/etc/conf.d \
+    --with-apx2=/usr/sbin/apxs \
     --enable-bcmath \
     --with-bz2 \
     --with-curl \
