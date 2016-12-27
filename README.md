@@ -1,6 +1,4 @@
 # Scripts
-Centralized location for frameworks/tools/software installation/monitoring and other scripts.
-
 This repository contains scripts or configuarions to install, setup, uninstall, upgrade or monitor frameworks, tools & machine resouces for various environments (different operating systems with various versions). It acts as a centralized location of scripts making it easier to refer or fetch them in other scripts. Hopefully might help someone. _**Feel free to fork, copy, suggest corrections or ask questions. Happy scripting :)**_
 
 # Contents
