@@ -4,3 +4,5 @@ sudo rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarc
 sudo yum install redis
 # Turn off auto start
 sudo /sbin/chkconfig redis off
+sudo pecl install redis
+echo 'extension=redis.so' > /etc/php.ini
